@@ -5,6 +5,5 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
-    working_dir: /go/src/github.com/thingful/growser
     ports:
       - "8000:8000"
