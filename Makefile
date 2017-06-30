@@ -10,4 +10,4 @@ test:
 
 .PHONY: build
 build:
-	docker build -t thingful/growser .
+	docker-compose build
