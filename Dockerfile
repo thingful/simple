@@ -1,7 +1,8 @@
 # build stage
 FROM golang:alpine AS build-env
+RUN apk --no-cache add build-base
 ADD . /src
-RUN cd /src && go build -o growser
+RUN cd /src && make build
 
 # final stage
 FROM alpine
