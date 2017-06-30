@@ -11,4 +11,3 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /app
 COPY --from=build-env /go/src/github.com/thingful/growser /app/
 ENTRYPOINT ./growser
-EXPOSE 8000

@@ -1,9 +1,11 @@
-version: "2.0"
+version: "3.0"
 
 services:
   app:
+    environment:
+      - PORT
     build:
-      dockerfile: Dockerfile
       context: .
     ports:
-      - 8000:8000
+      - ${PORT}:${PORT}
+    command: /app/growser
