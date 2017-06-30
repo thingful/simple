@@ -1,0 +1,4 @@
+package: github.com/thingful/growser
+import:
+- package: goji.io
+  version: ^2.0.0
