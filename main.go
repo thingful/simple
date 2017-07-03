@@ -10,11 +10,21 @@ import (
 	"goji.io/pat"
 )
 
+const (
+	// DefaultPort is the default port to listen on should it not be supplied by
+	// via the environment
+	DefaultPort = "8080"
+)
+
+// Hello is a simple handler that extracts a name from the request url, and
+// returns a string greeting to that name.
 func Hello(w http.ResponseWriter, r *http.Request) {
 	name := pat.Param(r, "name")
 	fmt.Fprintf(w, "Hello, %s!", name)
 }
 
+// Pulse is a simple handler that returns ok when called. Used as a health
+// check endpoint for our ELB.
 func Pulse(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "ok")
 }
@@ -22,7 +32,7 @@ func Pulse(w http.ResponseWriter, r *http.Request) {
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
-		log.Fatal("$PORT environment variable must be defined")
+		port = DefaultPort
 	}
 
 	mux := goji.NewMux()
