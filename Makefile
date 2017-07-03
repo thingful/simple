@@ -28,5 +28,5 @@ build: ## builds our final container using docker-compose
 	docker-compose build
 
 .PHONY: push
-push: ## pushes the container to Docker hub
+push: build ## pushes the container to Docker hub
 	docker-compose push
