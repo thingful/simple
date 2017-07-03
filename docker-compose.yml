@@ -6,6 +6,7 @@ services:
       - PORT
     build:
       context: .
+    image: thingful/simple
     ports:
       - ${PORT}:${PORT}
-    command: /app/growser
+    command: /app/simple
