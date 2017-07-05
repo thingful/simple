@@ -2,6 +2,8 @@
 
 EXECUTABLE = simple
 BUILDFLAGS = -a -installsuffix cgo
+USERNAME = thingful
+VERSION = $(shell git rev-parse --short=6 HEAD)
 
 SHELL := /bin/bash
 
@@ -29,4 +31,6 @@ build: ## builds our final container using docker-compose
 
 .PHONY: push
 push: build ## pushes the container to Docker hub
-	docker-compose push
+	docker tag ${USERNAME}/${EXECUTABLE}:latest thingful/simple:${VERSION}
+	docker push ${USERNAME}/${EXECUTABLE}:latest
+	docker push ${USERNAME}/${EXECUTABLE}:${VERSION}
