@@ -35,7 +35,7 @@ const (
 // returns a string greeting to that name.
 func Hello(w http.ResponseWriter, r *http.Request) {
 	name := pat.Param(r, "name")
-	fmt.Fprintf(w, "Hello, %s!", name)
+	fmt.Fprintf(w, "Hello, %s", name)
 }
 
 // Pulse is a simple handler that returns ok when called. Used as a health
