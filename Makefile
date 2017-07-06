@@ -1,9 +1,10 @@
 # Makefile for building our simple Go server, and deploying to Docker hub
 
-EXECUTABLE = simple
+# Include env.mk file if it exists
+-include env.mk
+
 BUILDFLAGS = -a -installsuffix cgo
-USERNAME = thingful
-VERSION = $(shell git rev-parse --short=6 HEAD)
+VERSION = $(shell git rev-parse HEAD)
 
 SHELL := /bin/bash
 
