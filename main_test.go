@@ -48,10 +48,14 @@ func TestHandlers(t *testing.T) {
 			t.Fatal(err)
 		}
 
+		env := &Env{
+			Greeting: "Hello",
+		}
+
 		rr := httptest.NewRecorder()
 		handler := goji.NewMux()
-		handler.HandleFunc(pat.Get("/hello/:name"), Hello)
-		handler.HandleFunc(pat.Get("/pulse"), Pulse)
+		handler.Handle(pat.Get("/hello/:name"), Handler{Env: env, H: Hello})
+		handler.Handle(pat.Get("/pulse"), Handler{Env: env, H: Pulse})
 
 		handler.ServeHTTP(rr, req)
 
